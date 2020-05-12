@@ -1,24 +1,51 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Table from './Components/Table';
+import Form from './Components/Form';
 
 function App() {
+
+  const [library, setLibrary] = useState([
+    {title: "Green Eggs and Ham", author: "Dr. Seuss", isAvailable: true},
+    {title: "Where the Wild Things Are", author: "Maurice Sendak", isAvailable: false}
+  ]);
+
+  const toggleAvailibity = (i) => {
+    const temp = [ ...library ];
+    temp[i].isAvailable = !temp[i].isAvailable;
+    setLibrary( temp );
+  }
+
+  const remove = (i) => {
+    const temp = [ ...library ];
+    temp.splice(i, 1);
+    setLibrary( temp );
+  }
+
+  const addBookToLibrary = (book) => {
+    const temp = [ ...library ];
+    temp.push( book );
+    setLibrary( temp );
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <section className="hero is-primary">
+        <div className="hero-body">
+          <h1 className="title">Library</h1>
+        </div>
+      </section>
+      <div className="columns">
+        <div className="column">
+          <Form create={ addBookToLibrary } />
+        </div>
+        <div className="column">
+          <Table 
+            library={library} 
+            toggleAvailibity={ toggleAvailibity }
+            remove={ remove }
+          />
+        </div>
+      </div>
     </div>
   );
 }
