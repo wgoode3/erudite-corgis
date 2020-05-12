@@ -34,6 +34,7 @@ function App() {
           <h1 className="title">Library</h1>
         </div>
       </section>
+      <br /><br />
       <div className="columns">
         <div className="column">
           <Form create={ addBookToLibrary } />

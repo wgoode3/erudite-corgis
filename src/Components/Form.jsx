@@ -15,23 +15,32 @@ const Form = (props) => {
 
   return (
     <div className="message is-danger">
-      <form onSubmit={ addBook }>
-        <label>Title:</label>
-        <input 
-          type="text" 
-          className="input" 
-          onChange={ (e) => setTitle(e.target.value) } 
-          value={ title }
-        />
-        <label>Author:</label>
-        <input 
-          type="text" 
-          className="input" 
-          onChange={ (e) => setAuthor(e.target.value) } 
-          value={ author }
-        />
-        <input type="submit" className="button is-danger" value="Add Book" />
-      </form>
+      <div className="message-header">
+        <p>Add a Book</p>
+      </div>
+      <div className="message-body">
+        <form onSubmit={ addBook }>
+          <div className="field">
+            <label>Title:</label>
+            <input 
+              type="text" 
+              className="input" 
+              onChange={ (e) => setTitle(e.target.value) } 
+              value={ title }
+            />
+          </div>
+          <div className="field">
+            <label>Author:</label>
+            <input 
+              type="text" 
+              className="input" 
+              onChange={ (e) => setAuthor(e.target.value) } 
+              value={ author }
+            />
+          </div>
+          <input type="submit" className="button is-danger" value="Add Book" />
+        </form>
+      </div>
     </div>
   );
 }
